@@ -34,10 +34,14 @@ rendered with Pillow. No photographs, no stock art, no official logos.
 
 ## Run it
 
-Requires Python 3 and Pillow:
+Requires Python 3 only — no third-party packages, no system fonts.
+
+The finished front page is stored in this repository as `entry.png`.
+`main.py` is a small copy program: it validates the PNG signature and
+size (max 1 MiB), copies it byte-for-byte to the output directory, then
+re-reads the copy and verifies its SHA-256 matches the source.
 
 ```sh
-pip install pillow
 python3 main.py
 ```
 
@@ -48,7 +52,7 @@ To write next to the script instead:
 MAKEFUN_OUTPUT_DIR=. python3 main.py
 ```
 
-The render is fully deterministic: two runs produce byte-identical PNGs.
+The copy is fully deterministic: two runs produce byte-identical PNGs.
 
 ## The 45 stories
 
